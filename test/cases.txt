@@ -1,0 +1,24 @@
+# First test
+
+START
+| b -> (b,R), START
+| _ -> (_,L), q
+
+==>
+
+File(State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)))
+
+
+# Second test
+
+START
+| b -> (b,R), START
+| _ -> (_,L), q
+
+q
+| 1 -> (0,L), q
+| 0 -> (1,L), END
+
+==>
+
+File(State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)), State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)))

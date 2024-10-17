@@ -1,0 +1,22 @@
+@skip { space | Comment }
+
+Tape_symbol { '0'|'1'|"_"|"b" }
+
+Head_move { "L"|"R" }
+
+Tape_action { Tape_symbol "->" "(" Tape_symbol "," Head_move ")" }
+
+State_rule { "|" Tape_action "," Sname }
+
+State { Sname State_rule+ }
+
+@top File { State* }
+
+@tokens {
+  space { $[ \t\n\r]+ }
+  Sname { $[a-zA-Z_]+ }
+  Comment { "#" ![\n]* }
+}
+
+
+@detectDelim
