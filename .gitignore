@@ -1,4 +1,7 @@
 /node_modules
-/dist
+/dist/*.js
+/dist/*.d.ts
+/dist/*.d.cts
+/dist/*.cjs
 /src/*.js
-
+.DS_Store
