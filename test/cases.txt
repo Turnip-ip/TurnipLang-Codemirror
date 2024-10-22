@@ -1,4 +1,4 @@
-# First test
+# One state
 
 START
 | b -> (b,R), START
@@ -9,7 +9,7 @@ START
 File(State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)))
 
 
-# Second test
+# Two states
 
 START
 | b -> (b,R), START
@@ -17,6 +17,20 @@ START
 
 q
 | 1 -> (0,L), q
+| 0 -> (1,L), END
+
+==>
+
+File(State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)), State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)))
+
+# Emoji
+
+START
+| b -> (b,R), START
+| _ -> (_,L), 🐮
+
+🐮
+| 1 -> (0,L), 🐮
 | 0 -> (1,L), END
 
 ==>

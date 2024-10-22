@@ -81,12 +81,14 @@ function turnipCompletionFor(context: CompletionContext) {
   // tree.from correspond to the start of the current node
   const stateNames = getStateNames(syntaxTree(state), state.doc, tree.from);
 
+  // TODO: we may want to propose Sname autocomplete even when a Sname is not started, but only expected
   if (tree.name == "Sname") {
     return {
       from: tree.from,
       options: stateNames,
     };
   }
+  // TODO: we may want to autocomplete complete states
 }
 
 export const turnipCompletion = TURNIPLang.data.of({

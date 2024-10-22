@@ -14,7 +14,8 @@ State { Sname State_rule+ }
 
 @tokens {
   space { $[ \t\n\r]+ }
-  Sname { $[a-zA-Z_]+ }
+  // We accept Sname that are alphanumeric characters or an emoji
+  Sname { $[a-zA-Z_] $[a-zA-Z1-9_]* | $[\u{203C}-\u{3299}] | $[\u{1F004}-\u{1FAF8}] }
   Comment { "#" ![\n]* }
 }
 
