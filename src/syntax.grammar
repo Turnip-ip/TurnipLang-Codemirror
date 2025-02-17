@@ -1,12 +1,16 @@
 @skip { space | Comment }
 
-Tape_symbol { '0'|'1'|"_"|"b" }
+Tape_symbol { '0' | '1' | "_" | Var_name }
 
 Head_move { "L"|"R" }
 
-Tape_action { Tape_symbol "->" "(" Tape_symbol "," Head_move ")" }
+Function { Fun_name "(" (digit | Var_name) ")" }
 
-State_rule { "|" Tape_action "," Sname }
+Fun_sequence { Function | "[]" | "[" Function ("," Function)* "]" }
+
+Tape_action { "(" Tape_symbol "," Head_move ")" | Fun_sequence }
+
+State_rule { "|" Tape_symbol "->" Tape_action "," Sname }
 
 State { Sname State_rule+ }
 
@@ -14,9 +18,12 @@ State { Sname State_rule+ }
 
 @tokens {
   space { $[ \t\n\r]+ }
+  digit { $[1-9] }
   // We accept Sname that are alphanumeric characters or an emoji
   Sname { $[a-zA-Z_] $[a-zA-Z1-9_]* | $[\u{203C}-\u{3299}] | $[\u{1F004}-\u{1FAF8}] }
-  Comment { "#" ![\n]* }
+  Fun_name { $[A-Z] $[A-Z1-9_]* }
+  Var_name { $[a-zA-Z] $[a-zA-Z1-9]* }
+  Comment { "//" ![\n]* }
 }
 
 

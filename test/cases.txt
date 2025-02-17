@@ -1,18 +1,17 @@
 # One state
 
 START
-| b -> (b,R), START
+| b -> (1,R), START
 | _ -> (_,L), q
 
 ==>
 
-File(State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)))
-
+File(State(Sname,State_rule(Tape_symbol(Var_name),Tape_action(Tape_symbol,Head_move),Sname),State_rule(Tape_symbol,Tape_action(Tape_symbol,Head_move),Sname)))
 
 # Two states
 
 START
-| b -> (b,R), START
+| b -> (1,R), START
 | _ -> (_,L), q
 
 q
@@ -21,12 +20,11 @@ q
 
 ==>
 
-File(State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)), State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)))
-
+File(State(Sname,State_rule(Tape_symbol(Var_name),Tape_action(Tape_symbol,Head_move),Sname),State_rule(Tape_symbol,Tape_action(Tape_symbol,Head_move),Sname)),State(Sname,State_rule(Tape_symbol,Tape_action(Tape_symbol,Head_move),Sname),State_rule(Tape_symbol,Tape_action(Tape_symbol,Head_move),Sname)))
 # Emoji
 
 START
-| b -> (b,R), START
+| b -> (1,R), START
 | _ -> (_,L), 🐮
 
 🐮
@@ -35,4 +33,14 @@ START
 
 ==>
 
-File(State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)), State(Sname,State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname),State_rule(Tape_action(Tape_symbol,Tape_symbol, Head_move),Sname)))
+File(State(Sname,State_rule(Tape_symbol(Var_name),Tape_action(Tape_symbol,Head_move),Sname),State_rule(Tape_symbol,Tape_action(Tape_symbol,Head_move),Sname)),State(Sname,State_rule(Tape_symbol,Tape_action(Tape_symbol,Head_move),Sname),State_rule(Tape_symbol,Tape_action(Tape_symbol,Head_move),Sname)))
+
+# Variable
+
+START
+| var -> (var,R), START
+| _ -> (_,L), q
+
+==>
+
+File(State(Sname,State_rule(Tape_symbol(Var_name),Tape_action(Tape_symbol(Var_name),Head_move),Sname),State_rule(Tape_symbol,Tape_action(Tape_symbol,Head_move),Sname)))
