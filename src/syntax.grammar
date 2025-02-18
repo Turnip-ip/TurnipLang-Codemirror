@@ -2,7 +2,7 @@
 
 Tape_symbol { '0' | '1' | "_" | Var_name }
 
-Head_move { "L"|"R" }
+Head_move { "L"|"R"|"S" }
 
 Function { Fun_name "(" (digit | Var_name) ")" }
 
